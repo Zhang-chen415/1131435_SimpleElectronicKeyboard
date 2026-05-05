@@ -16,7 +16,7 @@ namespace _1131435_張新誠_簡易電子琴
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmBeepPlayer());
         }
     }
 }
