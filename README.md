@@ -12,6 +12,12 @@
   - 程式啟動時會透過 `Dictionary` 紀錄所有控制項的原始比例。
   - 支援 `SizeChanged` 事件，確保琴鍵按鈕隨視窗縮放自動調整位置與大小。
 
+## 執行截圖
+<img width="1102" height="244" alt="image" src="https://github.com/user-attachments/assets/4537626d-19e1-46da-b326-35419c871e12" />
+<img width="1106" height="230" alt="image" src="https://github.com/user-attachments/assets/6390e408-a864-4509-babf-be5491877b51" />
+
+
+
 ## 技術實現細節
 - **底層呼叫**：透過 `DllImport("kernel32.dll")` 調用系統級 `Beep(int frequency, int duration)` 函式。
 - **事件委派**：實作 `InitializeButton()` 方法，讓多個琴鍵按鈕共用同一個事件處理函式，簡化程式架構。
