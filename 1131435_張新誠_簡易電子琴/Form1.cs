@@ -16,6 +16,8 @@ namespace _1131435_張新誠_簡易電子琴
         [DllImport("kernel32.dll")]
         public static extern bool Beep(int frequency, int duration);
         int[] freq = { 523, 587, 659, 698, 784, 880, 988, 1046 };
+        bool isRecording = false;                  // 用來記錄現在是否正在錄音
+        List<int> recordedNotes = new List<int>(); // 宣告一個 List 來儲存按下的音符對應索引
         int initWidth = 0;
         int initHeight = 0;
         Dictionary<string, Rectangle> initControl = new Dictionary<string, Rectangle>();
@@ -29,6 +31,11 @@ namespace _1131435_張新誠_簡易電子琴
         {
             Button btn = sender as Button;
             btn.Enabled = false;
+            if (isRecording)
+            {
+                // 將被按下的琴鍵 TabIndex (0~7) 存入 List 中
+                recordedNotes.Add(btn.TabIndex);
+            }
             Beep(freq[btn.TabIndex], 300);
             btn.Enabled = true;
         }
@@ -69,6 +76,39 @@ namespace _1131435_張新誠_簡易電子琴
                 ctl.Width = (int)(initControl[ctl.Name].Width * iRatioWith);
                 ctl.Height = (int)(initControl[ctl.Name].Height *
                 iRatioHeight);
+            }
+        }
+
+        private void btnRecord_Click(object sender, EventArgs e)
+        {
+            if (!isRecording)
+            {
+                isRecording = true;
+                recordedNotes.Clear();
+                btnRecord.Text = "停止錄音";
+                btnRecord.ForeColor = Color.Red;
+            }
+            else
+            {
+                isRecording = false;
+                btnRecord.Text = "開始錄音";
+                btnRecord.ForeColor = Color.Black;
+            }
+        }
+
+        private void btnPlayRecord_Click(object sender, EventArgs e)
+        {
+            if (recordedNotes.Count == 0)
+            {
+                MessageBox.Show("目前沒有錄音紀錄喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 依序讀取 List 中的音符索引並播放
+            foreach (int noteIndex in recordedNotes)
+            {
+                Beep(freq[noteIndex], 300);
+                System.Threading.Thread.Sleep(50);
             }
         }
     }

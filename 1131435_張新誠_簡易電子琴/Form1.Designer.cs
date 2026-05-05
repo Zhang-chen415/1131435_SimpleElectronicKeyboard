@@ -37,6 +37,8 @@
             this.btn7 = new System.Windows.Forms.Button();
             this.btn8 = new System.Windows.Forms.Button();
             this.palMain = new System.Windows.Forms.Panel();
+            this.btnRecord = new System.Windows.Forms.Button();
+            this.btnPlayRecord = new System.Windows.Forms.Button();
             this.palMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +118,8 @@
             // 
             // palMain
             // 
+            this.palMain.Controls.Add(this.btnPlayRecord);
+            this.palMain.Controls.Add(this.btnRecord);
             this.palMain.Controls.Add(this.btn1);
             this.palMain.Controls.Add(this.btn8);
             this.palMain.Controls.Add(this.btn2);
@@ -126,14 +130,34 @@
             this.palMain.Controls.Add(this.btn4);
             this.palMain.Location = new System.Drawing.Point(0, 2);
             this.palMain.Name = "palMain";
-            this.palMain.Size = new System.Drawing.Size(749, 157);
+            this.palMain.Size = new System.Drawing.Size(876, 157);
             this.palMain.TabIndex = 8;
+            // 
+            // btnRecord
+            // 
+            this.btnRecord.Location = new System.Drawing.Point(751, 22);
+            this.btnRecord.Name = "btnRecord";
+            this.btnRecord.Size = new System.Drawing.Size(110, 46);
+            this.btnRecord.TabIndex = 8;
+            this.btnRecord.Text = "開始錄音";
+            this.btnRecord.UseVisualStyleBackColor = true;
+            this.btnRecord.Click += new System.EventHandler(this.btnRecord_Click);
+            // 
+            // btnPlayRecord
+            // 
+            this.btnPlayRecord.Location = new System.Drawing.Point(751, 87);
+            this.btnPlayRecord.Name = "btnPlayRecord";
+            this.btnPlayRecord.Size = new System.Drawing.Size(110, 46);
+            this.btnPlayRecord.TabIndex = 9;
+            this.btnPlayRecord.Text = "播放錄音";
+            this.btnPlayRecord.UseVisualStyleBackColor = true;
+            this.btnPlayRecord.Click += new System.EventHandler(this.btnPlayRecord_Click);
             // 
             // frmBeepPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 161);
+            this.ClientSize = new System.Drawing.Size(882, 161);
             this.Controls.Add(this.palMain);
             this.Name = "frmBeepPlayer";
             this.Text = "簡易電子琴";
@@ -155,6 +179,8 @@
         private System.Windows.Forms.Button btn7;
         private System.Windows.Forms.Button btn8;
         private System.Windows.Forms.Panel palMain;
+        private System.Windows.Forms.Button btnPlayRecord;
+        private System.Windows.Forms.Button btnRecord;
     }
 }
 
